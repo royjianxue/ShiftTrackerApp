@@ -12,5 +12,6 @@ namespace DataProviders.Data
         void Post(Shift shifts);
         void DeleteALL();
         void DeleteById(int id);
+        void Update(int id, Shift shifts);
     }
 }

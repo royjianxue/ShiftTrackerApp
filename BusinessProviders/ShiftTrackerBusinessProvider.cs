@@ -37,5 +37,10 @@ namespace BusinessProviders
         {
             _shiftTrackerDataProvider.DeleteById(id);
         }
+
+        public void UpdateRecord(int id, Shift shifts)
+        {
+            _shiftTrackerDataProvider.Update(id, shifts);
+        }
     }
 }

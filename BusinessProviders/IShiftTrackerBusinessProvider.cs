@@ -9,5 +9,6 @@ namespace BusinessProviders
         void PostRecord(Shift shifts);
         void DeleteAllRecord();
         void DeleteRecordById(int id);
+        void UpdateRecord(int id, Shift shifts);
     }
 }

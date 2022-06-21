@@ -99,5 +99,18 @@ namespace DataProviders.Data
             using var conn = CreatConnection();
             conn.Execute(@"USE ShiftTrackerDb DELETE FROM ShiftTracker WHERE shiftId = @shiftId", new { shiftId = id });
         }
+
+        public void Update(int id, Shift shifts)
+        {
+            using var conn = CreatConnection();
+            var query = $"USE ShiftTrackerDb UPDATE ShiftTracker SET StartTime = @StartTime, EndTime = @EndTime, Pay = @Pay, Minutes = @Minutes, Location = @Location WHERE shiftId = {id}";
+            var dp = new DynamicParameters();
+            dp.Add("@StartTime", shifts.Start);
+            dp.Add("@EndTime", shifts.End);
+            dp.Add("@Pay", shifts.Pay);
+            dp.Add("@Minutes", shifts.Minutes);
+            dp.Add("@Location", shifts.Location);
+            conn.Execute(query, dp);
+        }
     }
 }

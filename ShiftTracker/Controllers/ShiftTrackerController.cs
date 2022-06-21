@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using BusinessProviders;
 using Common.Contracts.Model;
 
@@ -72,8 +71,19 @@ namespace ShiftTracker.Controllers
             return Ok();
         }
 
+        [HttpPut]
+        [Route("Update/{id}")]
+        public ActionResult UpdateParticipants(int id, Shift shifts)
+        {
+            var record = _shiftTrackerBusinessProvider.GetRecordByID(id);
+            if (record.Count() == 0)
+            {
+                return NotFound();
+            }
+            _shiftTrackerBusinessProvider.UpdateRecord(id, shifts);
+            return Ok();
 
-
+        }
 
     }
 }

@@ -32,9 +32,14 @@ namespace ShiftTracker
 
             app.UseHttpsRedirection();
 
+            app.UseRouting();
+
             app.UseAuthorization();
 
-            app.MapControllers();
+            app.UseEndpoints(options =>
+            {
+                app.MapControllers();
+            });
 
             app.Run();
         }

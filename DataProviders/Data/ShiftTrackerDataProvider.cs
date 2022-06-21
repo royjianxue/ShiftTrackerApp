@@ -85,7 +85,7 @@ namespace DataProviders.Data
             dp.Add("@Pay", shifts.Pay);
             dp.Add("@Minutes", shifts.Minutes);
             dp.Add("@Location", shifts.Location);
-            int res = conn.Execute(query, dp);
+            conn.Execute(query, dp);
         }
         
         public void DeleteALL()
@@ -97,7 +97,7 @@ namespace DataProviders.Data
         public void DeleteById(int id)
         {
             using var conn = CreatConnection();
-            int delRows = conn.Execute(@"USE ShiftTrackerDb DELETE FROM ShiftTracker WHERE shiftId = @shiftId", new { shiftId = id });
+            conn.Execute(@"USE ShiftTrackerDb DELETE FROM ShiftTracker WHERE shiftId = @shiftId", new { shiftId = id });
         }
     }
 }
